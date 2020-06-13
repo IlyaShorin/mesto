@@ -1,6 +1,20 @@
 .profile__title{
-  order: 3;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
   max-width: 318px;
   width: 100%;
   margin: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+@media screen and (max-width:335px){
+  .profile__title{
+    max-width: 280px;
+    font-size: 14px;
+    line-height: 17px;
+  }
 }

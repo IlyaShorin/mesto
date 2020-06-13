@@ -2,12 +2,31 @@
 @import url('./__name/profile__name.css');
 @import url('./__title/profile__title.css');
 @import url('./__edit-button/profile__edit-button.css');
+@import url('./__edit-button/profile__edit-button-pencil.css');
 @import url('./__add-button/profile__add-button.css');
+@import url('./__add-button/profile__add-button-plus.css');
 @import url('./__info/profile__info.css');
 
 .profile{
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   flex-wrap: wrap;
+  margin: 40px 0 50px;
+  align-items: center;
 }
 
+.profile:nth-child(2){
+  justify-content: flex-start;
+}
+
+@media screen and (max-width:882px){
+  .profile{
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+@media screen and (max-width:600px){
+  .profile{
+    margin: 40px 0 36px;
+  }
+}

@@ -1,8 +1,18 @@
 .profile__edit-button{
   border: 1px solid #ffffff;
   box-sizing: border-box;
+  background-color: black;
   width: 24px;
   height: 24px;
-  background-color: black;
-
+  margin: 0 0 0 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media screen and (max-width:335px){
+  .profile__edit-button{
+    margin: 0 0 0 1px;
+    width: 18px;
+    height: 18px;
+  }
 }

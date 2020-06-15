@@ -1,0 +1,19 @@
+.popup__button-save{
+  font-family: 'Inter', 'Arial', 'Helvetica', sans-serif;
+  text-align: center;
+  background-color: black;
+  color: white;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  border-radius: 2px;
+  margin: 0;
+  min-height: 50px;
+  border: none;
+}
+
+.popup__button-save:hover{
+  background: rgba(0, 0, 0, 0.8);
+}

@@ -8,10 +8,10 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  display: flex;
   justify-content: flex-start;
   align-items: center;
-  width: fit-content;
+  max-width: 336px;
+  width: 100%;
 }
 
 
@@ -20,8 +20,9 @@
     justify-content: center;
   }
 }
-@media screen and (max-width:336px){
+@media screen and (max-width:385px){
   .profile__name{
     font-size: 27px;
+    max-width: 201px;
   }
 }

@@ -1,7 +1,6 @@
 .profile__info{
   display: flex;
-  align-items: center;
-  flex-wrap: wrap;
+  flex-direction: column;
 }
 @media screen and (max-width:882px){
   .profile__info{

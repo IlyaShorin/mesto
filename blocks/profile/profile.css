@@ -6,7 +6,7 @@
 @import url('./__button/profile__button_edit-pencil.css');
 @import url('./__button/profile__button_edit.css');
 @import url('./__info/profile__info.css');
-
+@import url('./__alignment/profile__alignment.css');
 .profile{
   display: flex;
   justify-content: space-between;

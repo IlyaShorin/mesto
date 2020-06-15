@@ -8,10 +8,10 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  width: 100%;
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  width: fit-content;
 }
 
 

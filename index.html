@@ -10,72 +10,71 @@
   <div class="page__content">
     <header class="header">
       <img src="./images/header__logo.svg" alt="Место" class="header__logo">
-      <div class="header__line"></div>
     </header>
     <main class="content">
-      <section class="popup">
-        <form class="popup__container">
-          <h2 class="popup__heading">Редактировать Профиль</h2>
-          <input type="text" name="name" class="popup__input popup__input-name" autofocus>
-          <input type="text" name="title" class="popup__input popup__input-title">
-          <button type="submit" class="popup__button-save">Сохранить</button>
-          <button type="button" class="popup__button-close"></button>
-        </form>
-      </section>
       <section class="profile">
-        <img src="./images/kustojpg.jpg" alt="Жак-Ив Кусто" class="profile__avatar">
+        <img src="./images/kustojpg.jpg" alt="Аватар пользователя" class="profile__avatar">
         <div class="profile__info">
           <div class="profile__alignment">
-            <h2 class="profile__name">Жак-Ив Кусто</h2><button class="profile__button_edit"><img src="./images/edit-button.svg" alt="Кнопка редактирования" class="profile__button_edit-pencil"></button>
+            <h1 class="profile__name">Жак-Ив Кусто</h1><button type="button" class="profile__button-edit"><img src="./images/edit-button.svg" alt="Кнопка редактирования" class="profile__button_edit-pencil"></button>
           </div>
           <p class="profile__title">Исследователь океана</p>
         </div>
-        <button class="profile__button_add"><img src="./images/add-button.svg" alt="Кнопка добавления" class="profile__button_add-plus"></button>
+        <button type="button" class="profile__button-add"><img src="./images/add-button.svg" alt="Кнопка добавления" class="profile__button-add-plus"></button>
       </section>
       <ul class="cards">
         <li class="cards__item">
-          <img src="./images/Dombai.jpg" alt="Домбай" class="cards__image">
+          <img src="./images/dombai.jpg" alt="Домбай" class="cards__image">
           <div class="cards__caption">
             <p class="cards__title">Домбай</p>
-            <button class="cards__button"><img src="./images/like_button.svg" alt="Лайк"></button>
+            <button type="button" class="cards__button"><img src="./images/like_button.svg" alt="Лайк" class="cards__button-image"></button>
           </div>
         </li>
         <li class="cards__item">
           <img src="./images/Elbrus.jpg" alt="Эльбрус" class="cards__image">
           <div class="cards__caption">
             <p class="cards__title">Эльбрус</p>
-            <button class="cards__button"><img src="./images/like_button.svg" alt="Лайк"></button>
+            <button type="button" class="cards__button"><img src="./images/like_button.svg" alt="Лайк"></button>
           </div>
         </li>
         <li class="cards__item">
           <img src="./images/Indonesia.jpg" alt="Индонезия" class="cards__image">
           <div class="cards__caption">
             <p class="cards__title">Индонезия</p>
-            <button class="cards__button"><img src="./images/like_button.svg" alt="Лайк"></button>
+            <button type="button" class="cards__button"><img src="./images/like_button.svg" alt="Лайк"></button>
           </div>
         </li>
         <li class="cards__item">
           <img src="./images/Indonesia.jpg" alt="Индонезия" class="cards__image">
           <div class="cards__caption">
             <p class="cards__title">Индонезия</p>
-            <button class="cards__button"><img src="./images/like_button.svg" alt="Лайк"></button>
+            <button type="button" class="cards__button"><img src="./images/like_button.svg" alt="Лайк"></button>
           </div>
         </li>
         <li class="cards__item">
           <img src="./images/Indonesia.jpg" alt="Индонезия" class="cards__image">
           <div class="cards__caption">
             <p class="cards__title">Индонезия</p>
-            <button class="cards__button"><img src="./images/like_button.svg" alt="Лайк"></button>
+            <button type="button" class="cards__button"><img src="./images/like_button.svg" alt="Лайк"></button>
           </div>
         </li>
         <li class="cards__item">
           <img src="./images/karachaevsk-min.jpg" alt="Карачаево-Черкесия" class="cards__image">
           <div class="cards__caption">
             <p class="cards__title">Карачаево-Черкесия</p>
-            <button class="cards__button"><img src="./images/like_button.svg" alt="Лайк"></button>
+            <button type="button" class="cards__button"><img src="./images/like_button.svg" alt="Лайк"></button>
           </div>
         </li>
       </ul>
+      <section class="popup">
+        <form name="popup-container" class="popup__container">
+          <h2 class="popup__heading">Редактировать Профиль</h2>
+          <input type="text" name="name" class="popup__input popup__input_name" autofocus>
+          <input type="text" name="title" class="popup__input popup__input_title">
+          <button type="submit" class="popup__button-save">Сохранить</button>
+          <button type="button" class="popup__button-close"></button>
+        </form>
+      </section>
     </main>
     <footer class="footer">
       <p class="footer__copyright">&copy; 2020 Илья Шорин</p>

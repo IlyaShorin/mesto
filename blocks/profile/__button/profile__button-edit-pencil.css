@@ -1,9 +1,9 @@
-.profile__button_edit-pencil{
+.profile__button-edit-pencil{
   width: 10px;
   height: 10px;
 }
 @media screen and (max-width:335px){
-  .profile__button_edit-pencil{
+  .profile__button-edit-pencil{
     width: 7.5px;
     height: 7.5px;
   }

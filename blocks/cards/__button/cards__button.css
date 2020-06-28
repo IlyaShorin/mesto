@@ -1,7 +1,12 @@
 .cards__button{
-  background-color: white;
+  background-image: url('../../../images/like_button.svg');
   border: none;
   cursor: pointer;
+  background-size: cover;
+  width: 20px;
+  height: 18px;
+  background-color: white;
+  outline: none;
 }
 .cards__button:hover{
   opacity: 0.6;

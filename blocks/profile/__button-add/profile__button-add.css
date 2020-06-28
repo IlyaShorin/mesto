@@ -12,6 +12,7 @@
   align-items: center;
   cursor: pointer;
   background: none;
+  outline: none;
 }
 .profile__button-add:hover{
  opacity: 0.6;

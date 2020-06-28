@@ -12,6 +12,7 @@
   min-height: 50px;
   border: none;
   cursor: pointer;
+  outline: none;
 }
 
 .popup__button-save:hover{

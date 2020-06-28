@@ -1,0 +1,11 @@
+.cards__button_active{
+  background-image: url('../../../../images/like_active.svg');
+  border: none;
+  cursor: pointer;
+  background-size: cover;
+  width: 20px;
+  height: 18px;
+}
+.cards__button_active:hover{
+  opacity: 0.6;
+}

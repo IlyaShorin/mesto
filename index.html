@@ -23,56 +23,32 @@
         <button type="button" class="profile__button-add"><img src="./images/add-button.svg" alt="Кнопка добавления" class="profile__button-add-plus"></button>
       </section>
       <ul class="cards">
-        <li class="cards__item">
-          <img src="./images/dombai.jpg" alt="Домбай" class="cards__image">
-          <div class="cards__caption">
-            <p class="cards__title">Домбай</p>
-            <button type="button" class="cards__button"><img src="./images/like_button.svg" alt="Лайк" class="cards__button-image"></button>
-          </div>
-        </li>
-        <li class="cards__item">
-          <img src="./images/elbrus.jpg" alt="Эльбрус" class="cards__image">
-          <div class="cards__caption">
-            <p class="cards__title">Эльбрус</p>
-            <button type="button" class="cards__button"><img src="./images/like_button.svg" alt="Лайк"></button>
-          </div>
-        </li>
-        <li class="cards__item">
-          <img src="./images/indonesia.jpg" alt="Индонезия" class="cards__image">
-          <div class="cards__caption">
-            <p class="cards__title">Индонезия</p>
-            <button type="button" class="cards__button"><img src="./images/like_button.svg" alt="Лайк"></button>
-          </div>
-        </li>
-        <li class="cards__item">
-          <img src="./images/indonesia.jpg" alt="Индонезия" class="cards__image">
-          <div class="cards__caption">
-            <p class="cards__title">Индонезия</p>
-            <button type="button" class="cards__button"><img src="./images/like_button.svg" alt="Лайк"></button>
-          </div>
-        </li>
-        <li class="cards__item">
-          <img src="./images/indonesia.jpg" alt="Индонезия" class="cards__image">
-          <div class="cards__caption">
-            <p class="cards__title">Индонезия</p>
-            <button type="button" class="cards__button"><img src="./images/like_button.svg" alt="Лайк"></button>
-          </div>
-        </li>
-        <li class="cards__item">
-          <img src="./images/karachaevsk-min.jpg" alt="Карачаево-Черкесия" class="cards__image">
-          <div class="cards__caption">
-            <p class="cards__title">Карачаево-Черкесия</p>
-            <button type="button" class="cards__button"><img src="./images/like_button.svg" alt="Лайк"></button>
-          </div>
-        </li>
       </ul>
-      <section class="popup">
-        <form name="popup-container" class="popup__container">
+      <section class="popup popup_profile">
+        <form name="popup-container" class="popup__container popup__container_profile">
           <h2 class="popup__heading">Редактировать Профиль</h2>
-          <input type="text" name="name" class="popup__input popup__input_name" autofocus>
-          <input type="text" name="title" class="popup__input popup__input_title">
-          <button type="submit" class="popup__button-save">Сохранить</button>
-          <button type="button" class="popup__button-close"></button>
+          <input type="text" name="name" class="popup__input popup__input-profile-name" autofocus>
+          <input type="text" name="title" class="popup__input popup__input-title">
+          <button type="submit" class="popup__button-save popup__button-save-profile">Сохранить</button>
+          <button type="button" class="popup__button-close popup__button-close_profile"></button>
+        </form>
+      </section>
+      <section class="popup popup_cards">
+        <form name="popup-container" class="popup__container popup__container_card">
+          <h2 class="popup__heading">Новое место</h2>
+          <input type="text" name="name" placeholder="Название" class="popup__input popup__input-card-name" required autofocus>
+          <input type="url" name="img" placeholder="Ссылка на картинку" class="popup__input popup__input-link" required>
+          <button type="submit" class="popup__button-save popup__button-save-card">Создать</button>
+          <button type="button" class="popup__button-close popup__button-close_cards"></button>
+        </form>
+      </section>
+      <section class="popup popup_figure">
+        <form name="popup-container" class="popup__container popup__container_figure">
+          <button type="button" class="popup__button-close popup__button-close_cards"></button>
+          <figure class="">
+            <img src="#" alt="#" class="popup__image">
+            <figcaption class="popup__caption"></figcaption>
+          </figure>
         </form>
       </section>
     </main>
@@ -80,6 +56,16 @@
       <p class="footer__copyright">&copy; 2020 Илья Шорин</p>
     </footer>
   </div>
+  <template class="cards-template">
+    <li class="cards__item">
+      <img src="#" alt="#" class="cards__image">
+      <button type ="button" class="cards__delete-button"></button>
+      <div class="cards__caption">
+        <p class="cards__title"></p>
+        <button type="button" class="cards__button"></button>
+      </div>
+    </li>
+  </template>
   <script src="./scripts/script.js"></script>
 </body>
 </html>

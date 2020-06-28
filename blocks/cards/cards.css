@@ -3,6 +3,8 @@
 @import url('./__item/cards__item.css');
 @import url('./__title/cards__title.css');
 @import url('./__button/cards__button.css');
+@import url('./__delete/cards__delete-button.css');
+
 
 .cards{
   display: grid;

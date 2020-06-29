@@ -86,14 +86,19 @@ function deleteCard(ev){
 
 //функция открытия формы
 function openPopup() {
-  function popup() {
-    profilePopup.classList.add("popup_opened");
+  function profilePopup() {
+    document.querySelector(".popup_profile").classList.add("popup_opened");
     popupInputProfileName.value = profileName.textContent;
     popupInputTitle.value = profileTitle.textContent;
   }
+  function cardPopup(){
+    document.querySelector(".popup_cards").classList.add("popup_opened");
+    popupInputCardName.value = "";
+    popupInputLink.value = "";
+  }
   event.target.classList.value.includes("edit")
-    ? popup()
-    : cardsPopup.classList.add("popup_opened");
+    ? profilePopup()
+    : cardPopup()
 }
 
 //функция закрытия формы

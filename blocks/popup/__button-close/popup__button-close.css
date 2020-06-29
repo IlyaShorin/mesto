@@ -7,8 +7,8 @@
   background-color: unset;
   padding: 0;
   position: absolute;
-  top: -26px;
-  right: -23px;
+  top: -40px;
+  right: 6px;
   background-position: center;
   background-size: contain;
   cursor: pointer;
@@ -23,13 +23,13 @@
   .popup__button-close{
     height: 30px;
     width: 30px;
-    top: -12px ;
-    right: -12px ;
+    top: -30px ;
+    right: 14px ;
   }
 }
-@media screen and (max-width:340px){
+/* @media screen and (max-width:340px){
   .popup__button-close{
     top: -9px;
     right: -7px;
   }
-}
+} */

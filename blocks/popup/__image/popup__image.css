@@ -2,3 +2,8 @@
   max-width: 75vw;
   max-height: 75vh;
 }
+@media screen and (max-width:400px){
+  .popup__image{
+    max-width: 70vw;
+  }
+}

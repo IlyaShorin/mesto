@@ -38,12 +38,15 @@ const editButton = document.querySelector(".profile__button-edit");
 const addButton = document.querySelector(".profile__button-add");
 const profilePopup = document.querySelector(".popup_profile");
 const cardsPopup = document.querySelector(".popup_cards");
+const figurePopup = document.querySelector(".popup__figure");
+const popupImage = document.querySelector(".popup__image");
+const closeButtonFigure = document.querySelector(".popup__button-close_figure");
 const closeButtonProfile = document.querySelector(
   ".popup__button-close_profile"
 );
 const closeButtonCards = document.querySelector(".popup__button-close_cards");
-const profileFormElement = document.querySelector(".popup__container_profile");
-const cardFormElement = document.querySelector(".popup__container_card");
+const profileFormElement = document.querySelector(".popup__form-profile");
+const cardFormElement = document.querySelector(".popup__form-cards");
 const cardsList = document.querySelector(".cards");
 const cardsTemplate = document.querySelector(".cards-template");
 let popupInputProfileName = document.querySelector(
@@ -70,14 +73,34 @@ function addCards(name, link) {
     const eventTarget = evt.target;
     eventTarget.classList.toggle("cards__button_active");
   });
+  const cardImage = card.querySelector(".cards__image");
+  cardImage.addEventListener("click",function (evt){
+    eventTarget = evt.target;
+    const newImage = eventTarget.src;
+    const newCaption = eventTarget.alt;
+    figurePopup.querySelector(".popup__image").src = newImage;
+    figurePopup.querySelector(".popup__caption").textContent = newCaption;
+    figurePopup.classList.add("popup_opened");
+    popupImage.src = figurePopup.querySelector(".popup__image").src;
+    popupImage.alt = figurePopup.querySelector(".popup__caption").textContent;
+  })
   card.querySelector(".cards__delete-button").addEventListener("click",deleteCard);
   cardsList.prepend(card);
 }
-
+// <section class="popup popup_figure">
+// <form name="popup-container" class="popup__container popup__container_figure">
+//   <button type="button" class="popup__button-close popup__button-close_cards"></button>
+//   <figure class="">
+//     <img src="#" alt="#" class="popup__image">
+//     <figcaption class="popup__caption"></figcaption>
+//   </figure>
+// </form>
+// </section>
 //заполняем страницу из шаблона карточек
 initialCards.forEach((element) => {
   addCards(element.name, element.link);
 });
+
 //функция удаления карточки
 function deleteCard(ev){
   const card = ev.target.closest(".cards__item");
@@ -85,20 +108,17 @@ function deleteCard(ev){
 }
 
 //функция открытия формы
-function openPopup() {
-  function profilePopup() {
+function openPopup(){
+ if (event.target.classList.value.includes("edit")){
     document.querySelector(".popup_profile").classList.add("popup_opened");
     popupInputProfileName.value = profileName.textContent;
     popupInputTitle.value = profileTitle.textContent;
-  }
-  function cardPopup(){
-    document.querySelector(".popup_cards").classList.add("popup_opened");
-    popupInputCardName.value = "";
-    popupInputLink.value = "";
-  }
-  event.target.classList.value.includes("edit")
-    ? profilePopup()
-    : cardPopup()
+ }
+ else if (event.target.classList.value.includes("add")){
+     document.querySelector(".popup_cards").classList.add("popup_opened");
+     popupInputCardName.value = "";
+     popupInputLink.value = "";
+ }
 }
 
 //функция закрытия формы
@@ -121,7 +141,7 @@ function formSubmitHandler(evt) {
     profileName.textContent = popupInputProfileName.value;
     profileTitle.textContent = popupInputTitle.value;
   }
-  evt.target.classList.value.includes("container_profile")
+  evt.target.classList.value.includes("form-profile")
     ? profileAction()
     : cardAction();
   closePopup();
@@ -135,3 +155,4 @@ editButton.addEventListener("click", openPopup);
 addButton.addEventListener("click", openPopup);
 closeButtonProfile.addEventListener("click", closePopup);
 closeButtonCards.addEventListener("click", closePopup);
+closeButtonFigure.addEventListener("click",closePopup);

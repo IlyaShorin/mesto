@@ -63,7 +63,7 @@ const popupInputLink = document.querySelector(".popup__input-link");
 /////////////////////////  БЛОК ФУНКЦИЙ
 
 //функция добавления карточки
-function addCards(name, link) {
+function addCard(name, link) {
   const card = cardsTemplate.content.cloneNode(true);
   card.querySelector(".cards__title").textContent = name;
   card.querySelector(".cards__image").src = link;
@@ -89,7 +89,7 @@ function addCards(name, link) {
 
 //заполняем страницу из шаблона карточек
 initialCards.forEach((element) => {
-  cardsList.append(addCards(element.name,element.link))
+  cardsList.append(addCard(element.name,element.link))
 });
 
 //функция удаления карточки
@@ -115,7 +115,7 @@ profileFormElement.addEventListener("submit", function(evt){
   evt.preventDefault();
   profileName.textContent = popupInputProfileName.value;
   profileTitle.textContent = popupInputTitle.value;
-  closePopup(document.querySelector(".popup_opened"))
+  closePopup(profilePopup)
 });
 
 //отправка формы card
@@ -123,32 +123,29 @@ cardFormElement.addEventListener("submit", function(evt){
   evt.preventDefault();
   const name = popupInputCardName.value;
   const link = popupInputLink.value;
-  cardsList.prepend(addCards(name, link));
-  popupInputCardName.value="";
-  popupInputLink.value="";
-  closePopup(document.querySelector(".popup_opened"))
+  cardsList.prepend(addCard(name, link));
+  closePopup(cardsPopup)
 });
 
 //открытие формы редактирования
 editButton.addEventListener("click", function(){
-  openPopup(document.querySelector(".popup_profile"))
   popupInputProfileName.value = profileName.textContent;
   popupInputTitle.value = profileTitle.textContent;
+  openPopup(profilePopup)
 });
 
 //открытие формы добавления нового места
 addButton.addEventListener("click", function(){
-  openPopup(document.querySelector(".popup_cards"));
-  popupInputCardName.value = "";
-  popupInputLink.value = "";
+  cardFormElement.reset();
+  openPopup(cardsPopup);
 });
 
 closeButtonProfile.addEventListener("click", function(){
-  closePopup(document.querySelector(".popup_opened"))
+  closePopup(profilePopup)
 });
 closeButtonCards.addEventListener("click", function(){
-  closePopup(document.querySelector(".popup_opened"))
+  closePopup(cardsPopup)
 });
 closeButtonFigure.addEventListener("click",function(){
-  closePopup(document.querySelector(".popup_opened"))
+  closePopup(figurePopup)
 });

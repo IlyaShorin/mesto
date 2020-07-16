@@ -74,7 +74,7 @@ function addCard(name, link) {
     eventTarget.classList.toggle("cards__button_active");
   });
   const cardImage = card.querySelector(".cards__image");
-  cardImage.addEventListener("click",function (evt){
+  cardImage.addEventListener("click", function (evt) {
     const eventTarget = evt.target;
     const newImage = eventTarget.src;
     const newCaption = eventTarget.alt;
@@ -82,70 +82,98 @@ function addCard(name, link) {
     figurePopup.querySelector(".popup__caption").textContent = newCaption;
     figurePopup.classList.add("popup_opened");
     popupImage.alt = figurePopup.querySelector(".popup__caption").textContent;
-  })
-  card.querySelector(".cards__delete-button").addEventListener("click",deleteCard);
+  });
+  card
+    .querySelector(".cards__delete-button")
+    .addEventListener("click", deleteCard);
   return card;
 }
 
 //заполняем страницу из шаблона карточек
 initialCards.forEach((element) => {
-  cardsList.append(addCard(element.name,element.link))
+  cardsList.append(addCard(element.name, element.link));
 });
 
 //функция удаления карточки
-function deleteCard(ev){
+function deleteCard(ev) {
   const card = ev.target.closest(".cards__item");
   card.remove();
 }
 //функция открытия формы
- function openPopup(popup){
-   popup.classList.add("popup_opened");
- }
+function openPopup(popup) {
+  popup.classList.add("popup_opened");
+}
 
 //функция закрытия формы
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
 }
+
 /////////////////////////
 
 ///////////////////////// СЛУШАТЕЛИ КНОПОК
 
 //отправка формы profile
-profileFormElement.addEventListener("submit", function(evt){
+profileFormElement.addEventListener("submit", function (evt) {
   evt.preventDefault();
   profileName.textContent = popupInputProfileName.value;
   profileTitle.textContent = popupInputTitle.value;
-  closePopup(profilePopup)
+  closePopup(profilePopup);
 });
 
 //отправка формы card
-cardFormElement.addEventListener("submit", function(evt){
+cardFormElement.addEventListener("submit", function (evt) {
   evt.preventDefault();
   const name = popupInputCardName.value;
   const link = popupInputLink.value;
   cardsList.prepend(addCard(name, link));
-  closePopup(cardsPopup)
+  closePopup(cardsPopup);
 });
 
 //открытие формы редактирования
-editButton.addEventListener("click", function(){
+editButton.addEventListener("click", function () {
   popupInputProfileName.value = profileName.textContent;
   popupInputTitle.value = profileTitle.textContent;
-  openPopup(profilePopup)
+  openPopup(profilePopup);
+  const inputList = Array.from(document.querySelectorAll(".popup__input"));
+  const button = cardFormElement.querySelector(".popup__button-save");
+  toggleButtonState(inputList,button);
 });
 
 //открытие формы добавления нового места
-addButton.addEventListener("click", function(){
+addButton.addEventListener("click", function () {
   cardFormElement.reset();
   openPopup(cardsPopup);
+    const inputList = Array.from(document.querySelectorAll(".popup__input"));
+    const button = cardFormElement.querySelector(".popup__button-save");
+    toggleButtonState(inputList,button);
 });
 
-closeButtonProfile.addEventListener("click", function(){
-  closePopup(profilePopup)
+document.addEventListener('mousedown', function(evt) {
+  if(evt.target === profilePopup){
+    closePopup(profilePopup);
+  }
+  else if(evt.target === cardsPopup){
+    closePopup(cardsPopup);
+  }
+  else if(evt.target === figurePopup){
+    closePopup(figurePopup);
+  }
+})
+
+document.addEventListener('keydown', function(evt) {
+  const openedPopup = document.querySelector(".popup_opened")
+  if(openedPopup && evt.keyCode === 27){
+   closePopup(openedPopup)
+  }
+})
+
+closeButtonProfile.addEventListener("click", function (evt) {
+  closePopup(profilePopup);
 });
-closeButtonCards.addEventListener("click", function(){
-  closePopup(cardsPopup)
+closeButtonCards.addEventListener("click", function () {
+  closePopup(cardsPopup);
 });
-closeButtonFigure.addEventListener("click",function(){
-  closePopup(figurePopup)
+closeButtonFigure.addEventListener("click", function () {
+  closePopup(figurePopup);
 });

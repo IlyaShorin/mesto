@@ -138,6 +138,7 @@ editButton.addEventListener("click", function () {
   const inputList = Array.from(document.querySelectorAll(".popup__input"));
   const button = cardFormElement.querySelector(".popup__button-save");
   toggleButtonState(inputList,button);
+  enableValidation({formSelector: ".popup__form"},)
 });
 
 //открытие формы добавления нового места
@@ -147,6 +148,7 @@ addButton.addEventListener("click", function () {
     const inputList = Array.from(document.querySelectorAll(".popup__input"));
     const button = cardFormElement.querySelector(".popup__button-save");
     toggleButtonState(inputList,button);
+    enableValidation({formSelector: ".popup__form"},)
 });
 
 document.addEventListener('mousedown', function(evt) {

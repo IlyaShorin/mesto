@@ -58,7 +58,6 @@ const profileTitle = document.querySelector(".profile__title");
 const popupInputCardName = document.querySelector(".popup__input-card-name");
 const popupInputLink = document.querySelector(".popup__input-link");
 
-
 /////////////////////////
 
 /////////////////////////  БЛОК ФУНКЦИЙ
@@ -92,9 +91,9 @@ function addCard(name, link) {
     .querySelector(".cards__delete-button")
     .addEventListener("click", deleteCard);
   card.addEventListener("click", openCard(cardImage));
-  popupImage.addEventListener("click", function(){
+  popupImage.addEventListener("click", function () {
     closePopup(figurePopup);
-  })
+  });
   return card;
 }
 
@@ -121,8 +120,6 @@ function closePopup(popup) {
 /////////////////////////
 
 ///////////////////////// СЛУШАТЕЛИ КНОПОК
-
-
 
 //отправка формы profile
 profileFormElement.addEventListener("submit", function (evt) {

@@ -1,5 +1,7 @@
+///////////////////////// ИМПОРТ МОДУЛЕЙ
 import {Card} from './Card.js'
 import {FormValidator} from './FormValidator.js'
+
 ///////////////////////// БЛОК ПЕРЕМЕННЫХ
 
 // изначальный массив карточек
@@ -70,11 +72,21 @@ const validationData = {
 
 /////////////////////////  БЛОК ФУНКЦИЙ
 
+//заполняем карточки из шаблона
 initialCards.forEach((element)=>{
   const card = new Card(element,'.cards-template')
   const cardElement = card.generateCard();
   cardsList.append(cardElement);
 })
+
+//включаем валидацию на формах
+const formList = Array.from(document.querySelectorAll(".popup__form"));
+formList.forEach((form) => {
+  const formValidator = new FormValidator(validationData, form);
+  const formValidatorElement = formValidator.enableValidation();
+});
+
+//функция очистки формы после закрытия формы
 function clearForm() {
   const formList = Array.from(document.querySelectorAll(".popup__form"));
   const inputErrorClass = "form__input_type_error";
@@ -89,13 +101,6 @@ function clearForm() {
     });
   });
 }
-
-const formList = Array.from(document.querySelectorAll(".popup__form"));
-formList.forEach((form) => {
-  const formValidator = new FormValidator(validationData, form);
-  const formValidatorElement = formValidator.enableValidation();
-});
-
 
 //функция открытия попапа с картинкой
 export function openCard(cardImage) {

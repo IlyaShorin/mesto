@@ -59,4 +59,9 @@ export  class FormValidator {
       return !inputElement.validity.valid;
     });
   }
+  clearForm() {
+    this._inputList.forEach((inputElement)=>{
+      this._hideInputError(inputElement)
+    })
+  }
 }

@@ -1,5 +1,5 @@
-import {openPopup} from './Utils.js'
-import {popupImage,figurePopup} from './script.js'
+import {openPopup,figurePopup,popupImage} from './utils.js'
+
 export class Card {
   constructor(item,cardSelector){
     this._name = item.name;
@@ -7,7 +7,7 @@ export class Card {
     this._cardSelector = cardSelector
   }
   _getTemplate(){
-    const cardElement = document.querySelector(this._cardSelector).content.cloneNode(true);
+    const cardElement = document.querySelector(this._cardSelector).content.querySelector('.cards__item').cloneNode(true);
     return cardElement
   }
   generateCard(){
@@ -22,11 +22,10 @@ export class Card {
 
   _setEventListeners(){
     this._element.querySelector('.cards__button').addEventListener('click', (evt) => {
-      const eventTarget = evt.target;
-      eventTarget.classList.toggle('cards__button_active');
+      this._likeCard(evt)
     })
-    this._element.querySelector('.cards__delete-button').addEventListener('click',(evt)=>{
-      this._deleteCard(evt)
+    this._element.querySelector('.cards__delete-button').addEventListener('click',()=>{
+      this._deleteCard()
     })
     this._element.querySelector('.cards__image').addEventListener('click',this._openCard(this._element.querySelector('.cards__image')))
   }
@@ -43,9 +42,13 @@ export class Card {
     });
   }
 
-  _deleteCard(ev) {
-    const card = ev.target.closest(".cards__item");
-    card.remove();
+  _deleteCard() {
+    this._element.remove()
+    this._element = null
+  }
+  _likeCard(ev){
+    const eventTarget = ev.target;
+    eventTarget.classList.toggle('cards__button_active');
   }
 }
 

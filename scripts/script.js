@@ -1,9 +1,8 @@
 ///////////////////////// ИМПОРТ МОДУЛЕЙ
 import {Card} from './Card.js'
-import {FormValidator} from './FormValidator.js'
-import {openPopup,closePopup} from './Utils.js'
+import {openPopup,closePopup,figurePopup} from './Utils.js'
 import {initialCards,validationData} from './DataFile.js'
-
+import {FormValidator} from './FormValidator.js'
 ///////////////////////// БЛОК ПЕРЕМЕННЫХ
 
 // изначальный массив карточек
@@ -12,8 +11,6 @@ const editButton = document.querySelector(".profile__button-edit");
 const addButton = document.querySelector(".profile__button-add");
 const profilePopup = document.querySelector(".popup_profile");
 const cardsPopup = document.querySelector(".popup_cards");
-export const figurePopup = document.querySelector(".popup_figure");
-export const popupImage = document.querySelector(".popup__image");
 const closeButtonFigure = document.querySelector(".popup__button-close_figure");
 const closeButtonProfile = document.querySelector(
   ".popup__button-close_profile"
@@ -33,8 +30,8 @@ const popupInputCardName = document.querySelector(".popup__input-card-name");
 const popupInputLink = document.querySelector(".popup__input-link");
 const cardForm = document.querySelector(".popup__form-cards");
 const profileForm = document.querySelector(".popup__form-profile");
-export const cardValidator = new FormValidator(validationData,cardForm);
-export const profileValidator = new FormValidator(validationData,profileForm);
+const cardValidator = new FormValidator(validationData,cardForm);
+const profileValidator = new FormValidator(validationData,profileForm);
 
 
 /////////////////////////
@@ -53,14 +50,7 @@ profileValidator.enableValidation();
 
 
 //функция для слушателя формы
-export function closeByOverlayOrEsc(evt){
-  const openedPopup = document.querySelector(".popup_opened");
-  if (evt.target.classList.contains("popup_opened")) {
-    closePopup(openedPopup);
-  }else if(openedPopup && evt.keyCode === 27) {
-   closePopup(openedPopup);
-}
-}
+
 
 
 /////////////////////////
@@ -94,6 +84,7 @@ editButton.addEventListener("click", function () {
   popupInputTitle.value = profileTitle.textContent;
   openPopup(profilePopup);
   profileValidator.validate()
+  profileValidator.clearForm()
 });
 
 //открытие формы добавления нового места
@@ -101,7 +92,7 @@ addButton.addEventListener("click", function () {
   cardFormElement.reset();
   openPopup(cardsPopup);
   cardValidator.validate()
-
+  cardValidator.clearForm()
 });
 
 closeButtonProfile.addEventListener("click", function (evt) {

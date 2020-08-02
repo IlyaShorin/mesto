@@ -49,6 +49,7 @@ export class Card {
       const newCaption = eventTarget.alt;
       popupImage.src = newImage;
       popupImage.alt = newCaption;
+      console.log(figurePopup.querySelector('.popup__caption'))
       figurePopup.querySelector(".popup__caption").textContent = newCaption;
       openPopup(figurePopup);
     });

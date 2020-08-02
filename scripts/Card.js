@@ -26,8 +26,8 @@ export class Card {
   _setEventListeners() {
     this._element
       .querySelector(".cards__button")
-      .addEventListener("click", (evt) => {
-        this._likeCard(evt);
+      .addEventListener("click", () => {
+        this._likeCard();
       });
     this._element
       .querySelector(".cards__delete-button")
@@ -58,8 +58,7 @@ export class Card {
     this._element.remove();
     this._element = null;
   }
-  _likeCard(ev) {
-    const eventTarget = ev.target;
-    eventTarget.classList.toggle("cards__button_active");
+  _likeCard() {
+   this._element.querySelector('.cards__button').classList.toggle("cards__button_active");
   }
 }

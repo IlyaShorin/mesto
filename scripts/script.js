@@ -5,7 +5,7 @@ import { initialCards, validationData } from "./DataFile.js";
 import { FormValidator } from "./FormValidator.js";
 ///////////////////////// БЛОК ПЕРЕМЕННЫХ
 
-// изначальный массив карточек
+
 
 const editButton = document.querySelector(".profile__button-edit");
 const addButton = document.querySelector(".profile__button-add");

@@ -1,7 +1,7 @@
 ///////////////////////// ИМПОРТ МОДУЛЕЙ
 import { Card } from "./Card.js";
-import { openPopup, closePopup, figurePopup } from "./Utils.js";
-import { initialCards, validationData } from "./DataFile.js";
+import { openPopup, closePopup, figurePopup } from "./utils.js";
+import { initialCards, validationData } from "./dataFile.js";
 import { FormValidator } from "./FormValidator.js";
 ///////////////////////// БЛОК ПЕРЕМЕННЫХ
 

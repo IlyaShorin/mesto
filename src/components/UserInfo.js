@@ -10,7 +10,7 @@ export class UserInfo {
     };
   }
   setUserInfo(obj) {
-    this._userName.textContent = obj.userName;
-    this._userTitle.textContent = obj.userTitle;
+    this._userName.textContent = obj.name;
+    this._userTitle.textContent = obj.title;
   }
 }

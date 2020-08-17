@@ -1,28 +1,32 @@
 ///////////////////////// ИМПОРТ МОДУЛЕЙ
-import { Card } from "../scripts/Card.js";
+import { Card } from "../components/Card.js";
 import { initialCards, validationData } from "../scripts/dataFile.js";
-import { FormValidator } from "../scripts/FormValidator.js";
-import { PopupWithImage } from "../scripts/PopupWithImage.js";
-import { Section } from "../scripts/Section.js";
-import { PopupWithForm } from "../scripts/PopupWithForm.js";
-import { UserInfo } from "../scripts/UserInfo.js";
-import './index.css';
+import { FormValidator } from "../components/FormValidator.js";
+import { PopupWithImage } from "../components/PopupWithImage.js";
+import { Section } from "../components/Section.js";
+import { PopupWithForm } from "../components/PopupWithForm.js";
+import { UserInfo } from "../components/UserInfo.js";
+import "./index.css";
 /////////////////////////
 const cardsList = document.querySelector(".cards");
 const editButton = document.querySelector(".profile__button-edit");
 const addButton = document.querySelector(".profile__button-add");
 const cardForm = document.querySelector(".popup__form-cards");
 const profileForm = document.querySelector(".popup__form-profile");
+function newCard(obj) {
+  const card = new Card(obj, ".cards-template", (image, name) => {
+    popupWithImage.open(image, name);
+    popupWithImage.setEventListeners();
+  });
+  const cardElement = card.generateCard();
+  defaultSection.addItem(cardElement);
+}
+
 const defaultSection = new Section(
   {
     data: initialCards.reverse(),
     renderer: (item) => {
-      const card = new Card(item, ".cards-template", (image, name) => {
-        popupWithImage.open(image, name);
-        popupWithImage.setEventListeners();
-      });
-      const cardElement = card.generateCard();
-      defaultSection.addItem(cardElement);
+      newCard(item);
     },
   },
   cardsList
@@ -31,17 +35,12 @@ const profilePopup = new PopupWithForm(".popup_profile", (obj) => {
   userinfo.setUserInfo(obj);
 });
 const cardPopup = new PopupWithForm(".popup_cards", (obj) => {
-  const card = new Card(obj, ".cards-template", (image, name) => {
-    popupWithImage.open(image, name);
-    popupWithImage.setEventListeners();
-  });
-  const cardElement = card.generateCard();
-  defaultSection.addItem(cardElement);
+  newCard(obj);
 });
 const cardValidator = new FormValidator(validationData, cardForm);
 const profileValidator = new FormValidator(validationData, profileForm);
 const popupWithImage = new PopupWithImage(".popup_figure");
-let userinfo = new UserInfo({
+const userinfo = new UserInfo({
   userName: ".profile__name",
   userTitle: ".profile__title",
 });

@@ -5,18 +5,18 @@ export class PopupWithForm extends Popup {
     super(popupSelector);
     this._submit = submit;
     this._form = this._popup.querySelector(".popup__form");
-    this._userName = document.querySelector(".popup__input-profile-name");
-    this._userTitle = document.querySelector(".popup__input-title");
-    this._cardName = document.querySelector(".popup__input-card-name");
-    this._cardLink = document.querySelector(".popup__input-link");
+    this._userName = this._form.querySelector(".popup__input-profile-name");
+    this._userTitle = this._form.querySelector(".popup__input-title");
+    this._cardName = this._form.querySelector(".popup__input-card-name");
+    this._cardLink = this._form.querySelector(".popup__input-link");
   }
   _getInputValues() {
-    return {
-      userName: this._userName.value,
-      userTitle: this._userTitle.value,
-      name: this._cardName.value,
-      link: this._cardLink.value,
-    };
+    const obj = {};
+    const _inputList = this._form.querySelectorAll(".popup__input");
+    _inputList.forEach((el) => {
+      obj[el.name] = el.value;
+    });
+    return obj;
   }
   setEventListeners() {
     super.setEventListeners();
@@ -29,8 +29,5 @@ export class PopupWithForm extends Popup {
   close() {
     super.close();
     this._form.reset();
-  }
-  open() {
-    super.open();
   }
 }

@@ -11,19 +11,19 @@ export class Popup {
   }
   close() {
     this._popup.classList.remove("popup_opened");
+    document.removeEventListener("keydown", this._escClose);
+    document.removeEventListener("mousedown", this._overlayClose);
   }
   _handleEscClose(evt) {
     const openedPopup = document.querySelector(".popup_opened");
     if (openedPopup && evt.key === "Escape") {
       this.close();
-      document.removeEventListener("keydown", this._escClose);
     }
   }
   _handleOverlayClose(evt) {
     const openedPopup = document.querySelector(".popup_opened");
     if (evt.target === openedPopup) {
       this.close();
-      document.removeEventListener("mousedown", this._overlayClose);
     }
   }
   setEventListeners() {

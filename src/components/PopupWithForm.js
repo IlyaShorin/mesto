@@ -4,11 +4,7 @@ export class PopupWithForm extends Popup {
   constructor(popupSelector, submit) {
     super(popupSelector);
     this._submit = submit;
-    this._form = this._popup.querySelector(".popup__form");
-    this._userName = this._form.querySelector(".popup__input-profile-name");
-    this._userTitle = this._form.querySelector(".popup__input-title");
-    this._cardName = this._form.querySelector(".popup__input-card-name");
-    this._cardLink = this._form.querySelector(".popup__input-link");
+    this._form = this._popup.querySelector(".form");
   }
   _getInputValues() {
     const obj = {};

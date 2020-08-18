@@ -31,7 +31,7 @@ export const initialCards = [
   },
 ];
 export const validationData = {
-  formSelector: ".popup__form",
+  formSelector: ".form",
   inputSelector: ".popup__input",
   submitButtonSelector: ".popup__button-save",
   inactiveButtonClass: "popup__button-save_disabled",

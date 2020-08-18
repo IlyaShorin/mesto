@@ -11,8 +11,8 @@ import "./index.css";
 const cardsList = document.querySelector(".cards");
 const editButton = document.querySelector(".profile__button-edit");
 const addButton = document.querySelector(".profile__button-add");
-const cardForm = document.querySelector(".popup__form-cards");
-const profileForm = document.querySelector(".popup__form-profile");
+const cardForm = document.querySelector(".form-cards");
+const profileForm = document.querySelector(".form-profile");
 function newCard(obj) {
   const card = new Card(obj, ".cards-template", (image, name) => {
     popupWithImage.open(image, name);

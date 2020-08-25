@@ -7,6 +7,8 @@
 @import url('./__button-edit/profile__button-edit.css');
 @import url('./__info/profile__info.css');
 @import url('./__alignment/profile__alignment.css');
+@import url('./__avatar-overlay/profile__avatar-overlay.css');
+@import url('./__avatar-pencil/profile__avatar-pencil.css');
 .profile{
   display: flex;
   justify-content: space-between;

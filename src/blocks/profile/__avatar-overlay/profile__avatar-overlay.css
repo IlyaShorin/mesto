@@ -1,0 +1,11 @@
+.profile__avatar-overlay{
+width: 100%;
+}
+
+.profile__avatar-overlay:hover {
+  display: flex;
+  background: rgba(42, 44, 47, 0.3) url('../../../images/avatar-pencil.svg') center no-repeat;
+  width: 100%;
+  justify-content: center;
+  display: flex;
+}

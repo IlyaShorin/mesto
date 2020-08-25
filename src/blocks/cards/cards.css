@@ -4,8 +4,8 @@
 @import url('./__title/cards__title.css');
 @import url('./__button/cards__button.css');
 @import url('./__delete/cards__delete-button.css');
-
-
+@import url('./__counter/cards__counter.css');
+@import url('./__like/cards__like.css');
 .cards{
   display: grid;
   grid-template-columns: repeat(3,282px) ;

@@ -18,6 +18,8 @@ const api = new Api({
     "Content-Type": "application/json",
   },
 });
+const profileInputName = document.querySelector(".popup__input-profile-name");
+const profileInputTitle = document.querySelector(".popup__input-title");
 const cardsList = document.querySelector(".cards");
 const editButton = document.querySelector(".profile__button-edit");
 const addButton = document.querySelector(".profile__button-add");
@@ -236,12 +238,9 @@ avatarValidator.enableValidation();
 
 editButton.addEventListener("click", () => {
   profilePopup.open();
-  document.querySelector(
-    ".popup__input-profile-name"
-  ).value = userInfo.getUserInfo().userName;
-  document.querySelector(
-    ".popup__input-title"
-  ).value = userInfo.getUserInfo().userTitle;
+  const actualUserName = userInfo.getUserInfo();
+  profileInputName.value = actualUserName.userName;
+  profileInputTitle.value = actualUserName.userTitle;
   profileValidator.validate();
   profileValidator.clearForm();
 });

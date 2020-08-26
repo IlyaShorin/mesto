@@ -32,11 +32,6 @@ api.getUserInfo().then((data) => {
   myAvatar.style.backgroundSize = "cover";
 });
 
-// function renderLoading(isLoading, popup) {
-//   if (isLoading) {
-//     popup.querySelector(".popup__button-save").textContent = "Сохранение...";
-//   }
-// }
 function newCard(obj) {
   const card = new Card(
     {
@@ -71,7 +66,9 @@ function newCard(obj) {
       handleDeleteIconClick: () => {
         deletePopup.id = obj._id;
         deletePopup.cardElement = cardElement;
-        document.querySelector('.popup_delete-card').querySelector('.popup__button-save').textContent = 'Да'
+        document
+          .querySelector(".popup_delete-card")
+          .querySelector(".popup__button-save").textContent = "Да";
         deletePopup.open();
       },
     },
@@ -107,34 +104,65 @@ api.getInitialCards().then((data) => {
 });
 const deletePopup = new PopupDeleteCard(".popup_delete-card", () => {
   // попап подтверждения удаления карточки
-  document.querySelector('.popup_delete-card').querySelector('.popup__button-save').textContent = 'Удаляю...';
-  api.deleteCard(deletePopup.id)
+  document
+    .querySelector(".popup_delete-card")
+    .querySelector(".popup__button-save").textContent = "Удаляю...";
+  api.deleteCard(deletePopup.id).then(deletePopup.close());
   deletePopup.cardElement.remove();
   deletePopup.cardElement = null;
 });
 
 const profilePopup = new PopupWithForm(".popup_profile", (obj) => {
   // попап редактирования профиля
-  document.querySelector('.popup_profile').querySelector('.popup__button-save').textContent = 'Сохранение...';
-  api.updateUserInfo(obj).then((obj) => {
-    userInfo.setUserInfo({
-      name: obj.name,
-      title: obj.about,
+  document
+    .querySelector(".popup_profile")
+    .querySelector(".popup__button-save").textContent = "Сохранение...";
+  api
+    .updateUserInfo(obj)
+    .then((obj) => {
+      userInfo.setUserInfo({
+        name: obj.name,
+        title: obj.about,
+      });
+      profilePopup.close();
+    })
+    .finally(() => {
+      document
+        .querySelector(".popup_profile")
+        .querySelector(".popup__button-save").textContent = "Сохранить";
     });
-  });
 });
 
 const cardPopup = new PopupWithForm(".popup_cards", (obj) => {
   // попап добавления карточки
-  document.querySelector('.popup_cards').querySelector('.popup__button-save').textContent = 'Сохранение...';
-  api.addNewCard(obj).then((obj) => {
-    newCard(obj);
-  });
+  document
+    .querySelector(".popup_cards")
+    .querySelector(".popup__button-save").textContent = "Сохранение...";
+  api
+    .addNewCard(obj)
+    .then((obj) => {
+      newCard(obj);
+      cardPopup.close();
+    })
+    .finally(() => {
+      document
+        .querySelector(".popup_cards")
+        .querySelector(".popup__button-save").textContent = "Создать";
+    });
 });
 const avatarPopup = new PopupWithForm(".popup_avatar", (obj) => {
   // попап смены аватара
-  document.querySelector('.popup_avatar').querySelector('.popup__button-save').textContent = 'Сохранение...';
-  api.updateAvatar(obj.link);
+  document
+    .querySelector(".popup_avatar")
+    .querySelector(".popup__button-save").textContent = "Сохранение...";
+  api
+    .updateAvatar(obj.link)
+    .then(avatarPopup.close())
+    .finally(() => {
+      document
+        .querySelector(".popup_avatar")
+        .querySelector(".popup__button-save").textContent = "Сохранить";
+    });
   myAvatar.style.background = `url('${obj.link}') 0 0 / 100% 100% no-repeat`;
   myAvatar.style.backgroundSize = "cover";
 });
@@ -163,7 +191,6 @@ profileValidator.enableValidation();
 avatarValidator.enableValidation();
 
 editButton.addEventListener("click", () => {
-  document.querySelector('.popup_profile').querySelector('.popup__button-save').textContent = 'Сохранить';
   profilePopup.open();
   document.querySelector(
     ".popup__input-profile-name"
@@ -176,7 +203,6 @@ editButton.addEventListener("click", () => {
 });
 
 editAvatarButton.addEventListener("click", () => {
-  document.querySelector('.popup_avatar').querySelector('.popup__button-save').textContent = 'Сохранить';
   avatarPopup.open();
   avatarValidator.validate();
   avatarValidator.clearForm();
@@ -184,7 +210,6 @@ editAvatarButton.addEventListener("click", () => {
 
 //открытие формы добавления нового места
 addButton.addEventListener("click", () => {
-  document.querySelector('.popup_cards').querySelector('.popup__button-save').textContent = 'Сохранить';
   cardPopup.open();
   cardValidator.validate();
   cardValidator.clearForm();
